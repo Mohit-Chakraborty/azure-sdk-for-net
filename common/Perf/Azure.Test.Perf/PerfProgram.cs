@@ -82,7 +82,7 @@ namespace Azure.Test.Perf
             }));
             Console.WriteLine();
 
-            using var setupStatusCts = new CancellationTokenSource();
+            using var setupStatusCts = new CancellationTokenSource(millisecondsDelay: options.Duration * 1000);
             var setupStatusThread = PerfStressUtilities.PrintStatus("=== Setup ===", () => ".", newLine: false, setupStatusCts.Token);
 
             using var cleanupStatusCts = new CancellationTokenSource();
